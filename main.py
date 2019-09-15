@@ -1,11 +1,13 @@
 import pyautogui
 import time
 import numpy as np
-#import imutils
-#import cv2
+import imutils
+import cv2
 
 pyautogui.moveTo(1920/2, 600, duration=0.4)
 pyautogui.leftClick()
+
+screenshots = {}
 
 pyautogui.leftClick()
 pyautogui.drag(0, 400, button='right', duration=0.5)
@@ -28,5 +30,14 @@ def rotate(dir):
     if dir == "right":
         x = 221
 
-# image = pyautogui.screenshot()
-# image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+def take_screenshot(name):
+    image = pyautogui.screenshot()
+    image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    screenshots[name] = image
+
+take_screenshot('test')
+
+canny_output = cv2.Canny(screenshots['test'], 100, 200)
+
+cv2.imshow("test", imutils.resize(canny_output, height=800))
+cv2.waitKey(0)
