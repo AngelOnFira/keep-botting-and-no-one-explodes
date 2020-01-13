@@ -1,0 +1,23 @@
+name: Run tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - uses: dschep/install-poetry-action@v1.3
+        with:
+          version: 1.0.2
+      - name: Install dependencies
+        run: |
+          poetry install
+      - name: Test with Pytest
+        run: |
+          poetry run pytest
