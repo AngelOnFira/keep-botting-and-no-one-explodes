@@ -1,10 +1,13 @@
 import pytest
-from modules.wires_simple import WiresSimple
+from modules.logic.wires_simple import WiresSimple
+from utils import verifyCapture
+
+module = 'Simple Wires'
 
 
 def test_3_wires(capsys):
     first_condition = WiresSimple((0, 0), "ABC123")
-    first_condition.solution([
+    solution = first_condition.solution([
         'blue',
         'blue',
         'blue',
@@ -13,11 +16,10 @@ def test_3_wires(capsys):
         '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 2 in position 2\n"
+    assert solution == (2, 2,)
 
     second_condition = WiresSimple((0, 0), "ABC123")
-    second_condition.solution([
+    solution = second_condition.solution([
         'blue',
         '',
         'red',
@@ -26,24 +28,22 @@ def test_3_wires(capsys):
         '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 3 in position 6\n"
+    assert solution == (3, 5,)
 
     third_condition = WiresSimple((0, 0), "ABC123")
-    third_condition.solution([
+    solution = third_condition.solution([
         'blue',
-        'red',
         '',
         'blue',
+        'red',
         '',
         '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 3 in position 4\n"
+    assert solution == (2, 3,)
 
     fourth_condition = WiresSimple((0, 0), "ABC123")
-    fourth_condition.solution([
+    solution = fourth_condition.solution([
         'blue',
         'red',
         '',
@@ -52,33 +52,30 @@ def test_3_wires(capsys):
         '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 3 in position 5\n"
+    assert solution == (3, 5,)
 
     mixed_condition = WiresSimple((0, 0), "ABC123")
-    mixed_condition.solution([
-        'blue',
+    solution = mixed_condition.solution([
         'blue',
         'white',
         '',
-        'black',
-        'blue',
+        'red',
+        '',
+        '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 4 in position 5\n"
+    assert solution == (3, 4,)
 
 
 def test_4_wires(capsys):
-    first_condition = WiresSimple((0, 0), "ABC123")
-    first_condition.solution([
+    first_condition2 = WiresSimple((0, 0), "XXXXX7")
+    solution = first_condition2.solution([
         'blue',
         'red',
         '',
         '',
+        'red',
         'black',
-        '',
     ])
 
-    captured = capsys.readouterr()
-    assert captured.out == "Simple Wires: I cut wire 3 in position 5\n"
+    assert solution == (3, 5,)
