@@ -1,6 +1,5 @@
 import pytest
 from modules.logic.wires_simple import WiresSimple
-from utils import verifyCapture
 
 module = 'Simple Wires'
 
