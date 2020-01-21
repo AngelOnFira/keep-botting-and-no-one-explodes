@@ -17,7 +17,8 @@ jobs:
           version: 1.0.2
       - name: Install dependencies
         run: |
-          poetry install
+          poetry export -f requirements.txt -o requirements.txt
+          pip install -r requirements.txt
       - name: Test with Pytest
         run: |
-          poetry run pytest
+          pytest
