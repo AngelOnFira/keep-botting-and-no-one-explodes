@@ -66,6 +66,8 @@ def test_both_wire(capsys):
     solution_led1 = validator.solution(['red', 'blue'], False, True, 0, False, 'RS34')
     solution_led2 = validator.solution(['red', 'blue'], False, True, 0, False, 'RS33')
     solution_both = validator.solution(['red', 'blue'], True, True, 0, False, "0")
+    solution_other1 = validator.solution(['red', 'white'], False, True, 0, False, "0")
+    solution_other2 = validator.solution(['blue', 'white'], True, True, 2, False, "0")
 
     assert solution_none1
     assert not solution_none2
@@ -74,3 +76,5 @@ def test_both_wire(capsys):
     assert solution_led1
     assert not solution_led2
     assert not solution_both
+    assert not solution_other1
+    assert solution_other2
