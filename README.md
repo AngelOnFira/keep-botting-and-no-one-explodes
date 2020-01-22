@@ -1,5 +1,7 @@
 # Keep Botting and No One Explodes
 
+[![codecov](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes/branch/master/graph/badge.svg?token=HLX1iYCMof)](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes)
+
 This project requires Python 3.7, the easiest way to do this is probably with [Pyenv](https://github.com/pyenv/pyenv). Once it's installed, you can run `pyenv install 3.7.0` and then `pyenv global 3.7.0`.
 
 This project uses the Poetry package manager for the Python dependencies. [Install it](https://github.com/python-poetry/poetry) and then run `poetry install` from the root folder of this project. After the deps are installed, you can run any Python commands in this env as long as they are preceded by `poetry run`.
