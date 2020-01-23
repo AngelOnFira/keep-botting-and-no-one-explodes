@@ -38,7 +38,15 @@ rules = {
 class WiresComplicated:
 
     def solution(self, colors, has_star, has_led, battery_count, has_parallel, serial_number):
-        primary = colors[0] if len(colors) == 1 else 'both'
+        
+        if 'red' in colors and 'blue' in colors:
+          primary = 'both'
+        elif 'red' in colors:
+          primary = 'red'
+        elif 'blue' in colors:
+          primary = 'blue'
+        else:
+          primary = 'white'
         
         if has_star and has_led:
             secondary = 'both'
@@ -49,7 +57,7 @@ class WiresComplicated:
         else:
             secondary = 'none'
 
-        validator       = rules[primary][secondary]
+        validator = rules[primary][secondary]
 
         return validator(
             two_plus_batt=battery_count >= 2,
