@@ -1,4 +1,3 @@
-#oddNumbers = ['1', '3', '5', '7', '9']
 from enum import Enum
 
 # Defines the current stage (1-5)
