@@ -17,8 +17,13 @@ jobs:
           version: 1.0.2
       - name: Install dependencies
         run: |
-          poetry export -f requirements.txt -o requirements.txt
+          poetry export --dev -f requirements.txt -o requirements.txt
           pip install -r requirements.txt
       - name: Test with Pytest
         run: |
-          pytest
+          pytest --cov-report=xml
+      - uses: codecov/codecov-action@v1.0.5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          fail_ci_if_error: true
