@@ -1,6 +1,6 @@
 # primary   attributes: colors
 # secondary attributes: star, led
-# ternary   attributes: 2+ batt, parallel, sn even
+# tertiary  attributes: 2+ batt, parallel, sn even
 
 has_two_plus_batt   = lambda **kwargs : kwargs['two_plus_batt']
 has_parallel        = lambda **kwargs : kwargs['parallel']

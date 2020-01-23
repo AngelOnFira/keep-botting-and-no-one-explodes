@@ -3,7 +3,7 @@ from modules.logic.wires_complicated import WiresComplicated
 
 module = 'Complicated Wires'
 
-def test_white_wire(capsys):
+def test_white_wire():
     validator = WiresComplicated()
 
     solution_none = validator.solution(['white'], False, False, 2, True, "0")
@@ -18,7 +18,7 @@ def test_white_wire(capsys):
     assert solution_both1
     assert not solution_both2
 
-def test_red_wire(capsys):
+def test_red_wire():
     validator = WiresComplicated()
 
     solution_none1 = validator.solution(['red'], False, False, 2, True, "RJ20")
@@ -37,7 +37,7 @@ def test_red_wire(capsys):
     assert solution_both1
     assert not solution_both2
 
-def test_blue_wire(capsys):
+def test_blue_wire():
     validator = WiresComplicated()
 
     solution_none1 = validator.solution(['blue'], False, False, 0, False, 'RS34')
@@ -56,7 +56,7 @@ def test_blue_wire(capsys):
     assert solution_both1
     assert not solution_both2
 
-def test_both_wire(capsys):
+def test_both_wire():
     validator = WiresComplicated()
 
     solution_none1 = validator.solution(['red', 'blue'], False, False, 0, False, 'RS34')
