@@ -146,29 +146,32 @@ def test_synthetic_2(capsys):
 
 def test_synthetic_fail():
 
-        stages = [
-            Stage(1, 3, [3, 1, 2, 4]),
-            Stage(2, 1, [1, 2, 4, 3]),
-            Stage(3, 2, [2, 3, 4, 1]),
-            Stage(4, 4, [4, 3, 1, 2]),
-            Stage(5, 2, [3, 2, 4, 1])
-        ]
+    stages = [
+        Stage(1, 3, [3, 1, 2, 4]),
+        Stage(2, 1, [1, 2, 4, 3]),
+        Stage(3, 2, [2, 3, 4, 1]),
+        Stage(4, 4, [4, 3, 1, 2]),
+        Stage(5, 2, [3, 2, 4, 1])
+    ]
 
-        solutions = [
-            Instruction(Instruction.Type.POSITION, 3),
-            Instruction(Instruction.Type.LABEL, 4),
-            Instruction(Instruction.Type.LABEL, 2),
-            Instruction(Instruction.Type.POSITION, 3),
-            Instruction(Instruction.Type.LABEL, 2)
-        ]
+    solutions = [
+        Instruction(Instruction.Type.POSITION, 3),
+        Instruction(Instruction.Type.LABEL, 4),
+        Instruction(Instruction.Type.LABEL, 2),
+        Instruction(Instruction.Type.POSITION, 3),
+        Instruction(Instruction.Type.LABEL, 2)
+    ]
 
-        assertWasThrown = False
-        try:
-            run_test("test_synthetic_fail", stages, solutions)
-        except AssertionError as e:
-            assertWasThrown = True
-        finally:
-            assert assertWasThrown
+    with pytest.raises(AssertionError):
+        run_test("test_synthetic_fail", stages, solutions)
+
+    assertWasThrown = False
+    try:
+        run_test("test_synthetic_fail", stages, solutions)
+    except AssertionError as e:
+        assertWasThrown = True
+    finally:
+        assert assertWasThrown
 
 def test_instruction_eq():
     assert Instruction(Instruction.Type.POSITION, 1) == Instruction(Instruction.Type.POSITION, 1)
