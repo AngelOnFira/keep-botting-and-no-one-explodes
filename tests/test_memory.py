@@ -6,7 +6,7 @@ module = 'Memory'
 # Field tests are taken from real KTANE gameplay
 # Synthetic tests are there to shore up missing code coverage
 
-def test_field_1(capsys):
+def test_field_1():
 
     stages = [
         Stage(1, 1, [2, 4, 2, 1]),
@@ -26,7 +26,7 @@ def test_field_1(capsys):
 
     run_test("test_field_1", stages, solutions)
 
-def test_field_2(capsys):
+def test_field_2():
 
     stages = [
         Stage(1, 2, [1, 4, 2, 3]),
@@ -46,7 +46,7 @@ def test_field_2(capsys):
 
     run_test("test_field_2", stages, solutions)
 
-def test_field_3(capsys):
+def test_field_3():
 
     stages = [
         Stage(1, 4, [4, 3, 1, 2]),
@@ -66,7 +66,7 @@ def test_field_3(capsys):
 
     run_test("test_field_3", stages, solutions)
 
-def test_field_4(capsys):
+def test_field_4():
 
     stages = [
         Stage(1, 2, [3, 1, 2, 4]),
@@ -86,7 +86,7 @@ def test_field_4(capsys):
 
     run_test("test_field_4", stages, solutions)
 
-def test_synthetic_1(capsys):
+def test_synthetic_1():
 
     stages = [
         Stage(1, 3, [3, 1, 2, 4]),
@@ -126,7 +126,7 @@ def test_synthetic_2(capsys):
 
     run_test("test_synthetic_2", stages, solutions)
 
-def test_synthetic_fail(capsys):
+def test_synthetic_fail():
 
         stages = [
             Stage(1, 3, [3, 1, 2, 4]),
