@@ -50,12 +50,12 @@ class Button:
 
         return holdCallback
 
-    def pressAndHoldCallback(self, indicator_colour):
+    def pressAndHoldCallback(self, strip_colour):
         timerNum = -1
 
-        if (indicator_colour is Button.Colour.BLUE):
+        if (strip_colour is Button.Colour.BLUE):
             timerNum = 4
-        elif (indicator_colour is Button.Colour.YELLOW):
+        elif (strip_colour is Button.Colour.YELLOW):
             timerNum = 5
         else:
             timerNum = 1
