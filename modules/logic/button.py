@@ -1,63 +1,69 @@
-class Strip:
+from enum import Enum
 
-    def __init__(self, colour):
-        self.colour = colour
+## This indicator class should be moved out to a separate script in the future
+##  since it should first be stored by the Defuser when the game begins
+
+class Indicator:
+
+    def __init__(self, is_on, label):
+        self.is_on = is_on
+        self.label = label
 
 class Button:
 
-    def __init__(self, colour, text, button_state):
-        self.colour = colour
-        self.text = text
-        self.button_state = button_state
+    # Button colours:
+    #   Blue, Red, White, Yellow, Black
 
-    def pressButton(self, battery_count, label, indicator, strip, timer):
+    # Strip colours:
+    #   Blue, Red, White, Yellow
 
-        if self.colour == 'blue' and self.text == 'Abort':
-            return self.holdAndReleaseButton(strip, timer)
+    # Button lables:
+    #   Abort, Detonate, Hold, Press
 
-        elif battery_count > 1 and self.text == 'Detonate':
-            return self.immediatelyHoldAndReleaseButton()
+    Colour = Enum('Colour', 'BLUE, RED, WHITE, YELLOW, BLACK')
 
-        elif self.colour == 'white' and label == 'CAR' and indicator == True:
-            return self.holdAndReleaseButton(strip, timer)
+    def __init__(self, num_batteries, indicator, button_colour, button_label):
+        self.num_batteries = num_batteries
+        self.indicator = indicator
+        self.button_colour = button_colour
+        self.button_label = button_label
 
-        elif battery_count > 2 and indicator == True and label == 'FRK':
-            return self.immediatelyHoldAndReleaseButton()
+    def getPressAction(self):
 
-        elif self.colour == 'yellow':
-            return self.holdAndReleaseButton(strip, timer)
+        holdCallback = None
 
-        elif self.colour == 'red' and self.text == 'Hold':
-            return self.immediatelyHoldAndReleaseButton()
-
+        # Must be checked IN ORDER as they appear in the manual
+        if (self.button_colour is Button.Colour.BLUE and self.button_label is "Abort"):
+            holdCallback = self.pressAndHoldCallback
+        elif (self.num_batteries > 1 and self.button_label is "Detonate"):
+            holdCallback = None
+        elif (self.button_colour is Button.Colour.WHITE and self.isIndicator(True, "CAR")):
+            holdCallback = self.pressAndHoldCallback
+        elif (self.num_batteries > 2 and self.isIndicator(True, "FRK")):
+            holdCallback = None
+        elif (self.button_colour is Button.Colour.YELLOW):
+            holdCallback = self.pressAndHoldCallback
+        elif (self.button_colour is Button.Colour.RED and self.button_label is "Hold"):
+            holdCallback = None
         else:
-            return self.holdAndReleaseButton(strip, timer)
+            holdCallback = self.pressAndHoldCallback
 
-    def holdAndReleaseButton(self, strip, timer):
+        return holdCallback
 
-        self.button_state = 'HELD'
-        magic_number = self.checkStripColour(strip)
-        self.checkTimer(timer, magic_number)
-        return self.button_state
+    def pressAndHoldCallback(self, strip_colour):
+        timerNum = -1
 
-    def immediatelyHoldAndReleaseButton(self):
-
-        self.button_state = 'HELD'
-        self.button_state = 'RELEASED'
-        return self.button_state
-
-    def checkStripColour(self, strip):
-
-        if strip.colour == "blue":
-            return '4'
-        elif strip.colour == "yellow":
-            return '5'
+        if (strip_colour is Button.Colour.BLUE):
+            timerNum = 4
+        elif (strip_colour is Button.Colour.YELLOW):
+            timerNum = 5
         else:
-            return '1'
+            timerNum = 1
 
-    def checkTimer(self, timer, magic_number):
+        return timerNum
 
-        if magic_number in timer:
-            self.button_state = 'RELEASED'
-        else:
-            self.button_state = 'HELD'
+    def isIndicator(self, is_on, label):
+        if (self.indicator is None):
+            return False
+
+        return (self.indicator.is_on == is_on and self.indicator.label == label)
