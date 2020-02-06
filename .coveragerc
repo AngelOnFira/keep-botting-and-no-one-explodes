@@ -1,0 +1,2 @@
+[run]
+omit = modules/controller/*, modules/feature_detection/*, modules/bomb.py
