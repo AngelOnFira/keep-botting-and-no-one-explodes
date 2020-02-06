@@ -55,8 +55,12 @@ class WiresSimple:
         elif len(self.wires) == 6:
             if self.wires.count('yellow') == 0 and self.bomb.serial[-1] in oddNumbers:
                 self._cutWire(3)
-            elif self.wires.count('yellow') and self.wires.count('white') > 1:
-                pass
+            elif self.wires.count('yellow') == 1 and self.wires.count('white') > 1:
+                self._cutWire(4)
+            elif self.wires.count('red') == 0:
+                self._cutWire(6)
+            else:
+                self._cutWire(4)
 
         return self.solution
 
