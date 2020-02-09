@@ -1,11 +1,11 @@
 # Keep Botting and No One Explodes
+=======
+[![codecov](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes/branch/master/graph/badge.svg?token=HLX1iYCMof)](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes)
 
 Kristoffer Anderson - 101009514
 Arryan Zaman - 101091460
 Nem Zutkovic - 101085982
 Aaron Ramos-Lazette - 101039899
-
-![bomb](images/bomb-front.jpg)
 
 ## Usage
 
@@ -19,12 +19,13 @@ To run the tests, you'll need to run `poetry run pytest`. To run the project, yo
 
 Keep Botting and No One Explodes (KBE) is a bot that can play "Keep Talking and Nobody Explodes". Keep Talking is a video game in which human players work together to defuse a bomb. The difference between the actual video game and what we are trying to accomplish is that KBE uses computer vision to analyze and manipulate the bomb by mimicking a controller, inspecting specific features, and recognizing modules. KBE will then find solutions to each puzzle and execute them without any human interaction.
 
+![bomb](images/bomb-front.jpg)
+
 ## Background
 
 In “Keep Talking and No One Explodes”, a single player is the “Bomb Defuser” who interacts with and relays information about the bomb to one or more “Bomb Experts” who hold the [bomb defusal manual](http://www.bombmanual.com/web/index.html). The bomb defusal manual holds the key to solving each puzzle/module. The bomb experts, in turn, provide the bomb defuser with step-by-step instructions to progress through the various challenges of defusing the bomb. To defuse a bomb, the bomb defuser must disarm all of its modules before the countdown timer expires or before three strikes (bomb defusal failures) are made.
 
 Computer assistance has been used before to help play the game. A bot was created that could listen to instructions that a human bomb diffuser would give. It would solve a module, and speak the solution to the bomb defuser. You can see the bot defuse the bomb with human guidance [here](https://www.youtube.com/watch?v=psiyI6jVpKI). This bot still requires human interaction to analyze the visual information from the bomb. The key difference with their project and what we are trying to do is to eliminate the human interaction completely and have the bot defuse the bomb.
-
 
 ## The Challenge
 
