@@ -1,11 +1,10 @@
 # Keep Botting and No One Explodes
-=======
 [![codecov](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes/branch/master/graph/badge.svg?token=HLX1iYCMof)](https://codecov.io/gh/AngelOnFira/keep-botting-and-no-one-explodes)
 
-Kristoffer Anderson - 101009514
-Arryan Zaman - 101091460
-Nem Zutkovic - 101085982
-Aaron Ramos-Lazette - 101039899
+Kristoffer Anderson - 101009514  
+Arryan Zaman - 101091460  
+Nem Zutkovic - 101085982  
+Aaron Ramos-Lazette - 101039899  
 
 ## Usage
 
