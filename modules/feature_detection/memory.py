@@ -12,7 +12,7 @@ class ColourRange:
 		self.max = np.array(max, np.uint8)	
 
 WHITE = ColourRange([0,0,215], [10,40,255])
-BROWN = ColourRange([15,50,20], [25,200,50])
+BROWN = ColourRange([15,65,38], [25,83,55])
 
 # as provided by opencv-python's documentation
 def harrisCorner(img):
@@ -41,17 +41,29 @@ def harrisCorner(img):
 	cv.imshow('harris', img)
 	return img
 
-def extract_text_helper(img, hsv, c_range):
+def extract_text_helper(img, hsv, c_range, img_out=None):
 	mask = cv.inRange(hsv, c_range.min, c_range.max)
+	#img = cv.medianBlur(img,5)
+	#img = cv.GaussianBlur(img, (5, 5), 0)
 	img = cv.bitwise_and(img, img, mask=mask)
-	cv.imshow('mask', mask)
-	cv.imshow('features', img)
-	cv.waitKey(0)
+	#img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+	#img = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,11,2)
+	img = cv.bitwise_not(img)
+	#img = cv.GaussianBlur(img, (5, 5), 0)
+	#img = cv.blur(img, (5, 5))
+
+	if img_out is not None:
+		cv.imwrite(img_out + '_mask.png', mask)
+		cv.imwrite(img_out + '_feats.png', img)
 	return pytesseract.image_to_string(img)
 	
-def extract_text(img):
-	img = harrisCorner(img) # odd, but it currently only seems to register the buttons after applying Harris Corner
+def extract_text(img, img_out=None):
+	#img = harrisCorner(img) # odd, but it currently only seems to register the buttons after applying Harris Corner
 	hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
-	display_text = extract_text_helper(img, hsv_img, WHITE)
-	buttons_text = extract_text_helper(img, hsv_img, BROWN)
+	if img_out is not None:
+		img_out += '_display'
+	display_text = extract_text_helper(img, hsv_img, WHITE, img_out)
+	if img_out is not None:
+		img_out += '_buttons'
+	buttons_text = extract_text_helper(img, hsv_img, BROWN, img_out)
 	return (display_text, buttons_text)
