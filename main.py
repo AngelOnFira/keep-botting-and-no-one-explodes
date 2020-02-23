@@ -1,17 +1,18 @@
 from modules.bomb import Bomb
 from modules.feature_detection.bomb_detection import detectVisibleFeatures
+from modules.controller.controller import pickUpBomb
 
-bomb = new Bomb()
+# bomb = new Bomb()
 
-# pick up the bomb
+pickUpBomb()
 
-detectVisibleFeatures(bomb)
+# detectVisibleFeatures(bomb)
 
 # rotate bomb to the other side
 
-detectVisibleFeatures(bomb)
+# detectVisibleFeatures(bomb)
 
-for module in bomb.modules:
-    # solve the module
-    # execute the solution
-    pass
+# for module in bomb.modules:
+#     # solve the module
+#     # execute the solution
+#     pass
