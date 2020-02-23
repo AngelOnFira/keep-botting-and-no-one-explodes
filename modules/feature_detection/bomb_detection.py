@@ -1,9 +1,9 @@
-from modules.feature_detection.functions import take_screenshot
+from modules.feature_detection.functions import takeScreenshot
 
 
 def detectVisibleFeatures(bomb):
     # take screenshot
-    screen = take_screenshot()
+    screen = takeScreenshot()
 
     # extract features (modules, ports, batteries)
 
