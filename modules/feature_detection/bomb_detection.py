@@ -1,12 +1,10 @@
 import cv2
 import pyautogui
 import numpy as np
+import time
 
-from modules.feature_detection.functions import takeScreenshot, matchImages
-
-
-def lstAvg(lst):
-    return int(sum(lst) / len(lst))
+from modules.feature_detection.functions import takeScreenshot, matchImages, averages
+from modules.controller.controller import clickAtLocation
 
 
 def detectVisibleFeatures(bomb):
@@ -18,22 +16,18 @@ def detectVisibleFeatures(bomb):
     # add found features to bomb
 
 
-def findBomb():
+def findMemoryModule():
+    memory = cv2.imread('images/modules/memory.png', 0)
+
+    clickAtLocation(averages(matchImages(memory, takeScreenshot(), 10)))
+
+
+def pickUpBomb():
     room = cv2.imread('images/room.png', 0)
 
-    # TODO change this to full screen, this
-    # is only for my second monitor
-    screen = pyautogui.screenshot(region=(1920, 0, 1920, 1080))
-    screen = cv2.cvtColor(np.array(screen), cv2.COLOR_RGB2BGR)
+    coordinates = averages(matchImages(room, takeScreenshot(), 10))
 
-    matches = matchImages(room, screen, 10)
+    clickAtLocation(coordinates)
 
-    x_list = []
-    for point in matches:
-        x_list.append(point[0][0])
-
-    y_list = []
-    for point in matches:
-        y_list.append(point[0][1])
-
-    return (lstAvg(x_list), lstAvg(y_list),)
+    # Wait for the bomb to be picked up
+    time.sleep(0.5)

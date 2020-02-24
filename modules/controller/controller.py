@@ -1,5 +1,5 @@
 import pyautogui
-from modules.feature_detection.bomb_detection import detectVisibleFeatures, findBomb
+import time
 
 # This should do all general movement on the bomb.
 
@@ -11,9 +11,11 @@ def moveTo(moduleNum, bomb):
     pass
 
 
-def pickUpBomb():
-    location = findBomb()
+def clickAtLocation(location):
     pyautogui.moveTo(location[0] + 1920, location[1],
                      0.3, pyautogui.easeInQuad)
 
     pyautogui.click()
+
+
+def getWindowLocation

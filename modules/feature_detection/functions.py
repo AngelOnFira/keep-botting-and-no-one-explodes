@@ -1,11 +1,21 @@
 import pyautogui
 import cv2
 import numpy as np
+import os
+
+
+def lstAvg(lst):
+    return int(sum(lst) / len(lst))
 
 
 def takeScreenshot():
-    image = pyautogui.screenshot()
-    return cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    # TODO change this to full screen, this
+    # is only for my second monitor
+    image = pyautogui.screenshot(region=(1920, 0, 1920, 1080))
+    cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    cv2.imwrite("screen.png", cv_image)
+
+    return cv_image
 
 
 def matchImages(img1, img2, numPoints):
@@ -29,4 +39,22 @@ def matchImages(img1, img2, numPoints):
     dst_pts = np.float32(
         [kp2[matches[i].trainIdx].pt for i in range(numPoints)]).reshape(-1, 1, 2)
 
+    img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches[:10], None, flags=2)
+    cv2.imwrite("tes.png", img3)
+
     return dst_pts
+
+
+def averages(matches):
+    x_list = []
+    for point in matches:
+        x_list.append(point[0][0])
+
+    y_list = []
+    for point in matches:
+        y_list.append(point[0][1])
+
+    return (lstAvg(x_list), lstAvg(y_list),)
+
+
+def loadSettings():

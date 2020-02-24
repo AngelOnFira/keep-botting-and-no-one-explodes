@@ -1,10 +1,12 @@
 from modules.bomb import Bomb
-from modules.feature_detection.bomb_detection import detectVisibleFeatures
-from modules.controller.controller import pickUpBomb
+from modules.feature_detection.bomb_detection import detectVisibleFeatures, pickUpBomb, findMemoryModule
 
 # bomb = new Bomb()
 
+
 pickUpBomb()
+
+findMemoryModule()
 
 # detectVisibleFeatures(bomb)
 
