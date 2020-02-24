@@ -1,2 +1,7 @@
 [run]
-omit = modules/controller/*, modules/feature_detection/*, modules/bomb.py
+omit =
+    modules/controller/*
+    modules/feature_detection/*
+    modules/bomb.py
+    modules/functions.py
+    main.py
