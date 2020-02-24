@@ -18,4 +18,5 @@ def clickAtLocation(location):
     pyautogui.click()
 
 
-def getWindowLocation
+def getMousePosition():
+    return pyautogui.position()
