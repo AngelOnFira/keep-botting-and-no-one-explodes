@@ -10,12 +10,19 @@ from modules.controller.controller import clickAtLocation, moveToLocation
 
 MODULES_DIRECTORY = './images/modules'
 
+# Load array of images from ./images/modules
+moduleReferences = {}
+
+for f in listdir(MODULES_DIRECTORY):
+    if isfile(join(MODULES_DIRECTORY, f)):
+        moduleReferences[f] = cv2.imread(join(MODULES_DIRECTORY, f), 0)
+
 
 def segmentBomb(bomb):
     # These were recorded manually. They represent the
     # top left and bottom right points as percentages
     # of the way across the screen
-    module_locations = [
+    moduleLocations = [
         [0.30, 0.26, 0.43, 0.50],
         [0.43, 0.26, 0.58, 0.50],
         [0.58, 0.26, 0.73, 0.50],
@@ -24,8 +31,10 @@ def segmentBomb(bomb):
         [0.59, 0.51, 0.73, 0.76],
     ]
 
-    for module in module_locations:
-        takeScreenshot(bomb, module)
+    for module in moduleLocations:
+        moduleFound = takeScreenshot(bomb, module)
+        moduleGuess = detectModule(moduleFound)
+        print(moduleGuess[2])
 
     moveToLocation((
         getPixelFromPercentage(bomb, x=0.0),
@@ -40,24 +49,19 @@ def segmentBomb(bomb):
 def detectModule(moduleImg):
     # Have a module image passed in, figure out which one it is
 
-    # Load array of images from ./images/modules
-    moduleReferences = []
-
-    for f in listdir(MODULES_DIRECTORY):
-        if isfile(join(MODULES_DIRECTORY, f)):
-            moduleReferences += [cv2.imread(join(MODULES_DIRECTORY, f), 0)]
-
     # Check moduleImg against each
     modulesMatches = []
 
-    for reference in moduleReferences:
+    for key in moduleReferences:
         # [[reference, sumDistance], ...]
-        matches = matchImages(moduleImg, reference, 10)
+        matches = matchImages(moduleImg, moduleReferences[key], 10)
         modulesMatches.append(
-            (reference, sum([m.distance for m in matches[1]])))
+            (moduleReferences[key], sum([m.distance for m in matches[1]]), key))
+
+    bestGuess = min(modulesMatches, key=lambda match: match[1])
 
     # Return most likely image
-    return min(modulesMatches, key=lambda match: match[1])[0]
+    return bestGuess
 
 
 def detectVisibleFeatures(bomb):
