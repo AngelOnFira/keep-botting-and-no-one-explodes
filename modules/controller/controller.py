@@ -12,10 +12,12 @@ def moveTo(moduleNum, bomb):
 
 
 def clickAtLocation(location):
-    pyautogui.moveTo(location[0] + 1920, location[1],
-                     0.3, pyautogui.easeInQuad)
-
+    pyautogui.moveTo(location[0], location[1], 0.3, pyautogui.easeInQuad)
     pyautogui.click()
+
+
+def moveToLocation(location):
+    pyautogui.moveTo(location[0], location[1], 0.1, pyautogui.easeInQuad)
 
 
 def getMousePosition():

@@ -3,9 +3,7 @@ from modules.bomb import Bomb
 bomb = Bomb()
 bomb.loadSettings()
 
-exit()
-
-bomb.pickUpBomb()
+bomb.initialAnalysis()
 
 findMemoryModule()
 

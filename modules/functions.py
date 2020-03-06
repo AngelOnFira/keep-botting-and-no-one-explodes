@@ -13,7 +13,7 @@ def loadSettingsFile(bomb):
 
     for item in data:
         itemSplit = item.split("=")
-        bomb.settings[itemSplit[0]] = itemSplit[1]
+        bomb.settings[itemSplit[0]] = itemSplit[1].split(",")
 
     return data
 
@@ -23,12 +23,10 @@ def getWindowPosition():
     firstPos = None
     secondPos = None
     while command != "":
-        print("Put your cursor at the top left of the game window. It will be recorded in 2 seconds.")
-        time.sleep(2)
+        input('Press any key to record top left')
         firstPos = getMousePosition()
 
-        print("Put your cursor at the bottom right of the game window. It will be recorded in 2 seconds.")
-        time.sleep(2)
+        input('Press any key to record bottom right')
         secondPos = getMousePosition()
 
         command = input(
@@ -45,7 +43,7 @@ def getWindowPosition():
     file_object.write(output)
     file_object.close()
 
-    return output.split("=")[1]
+    return output.split("=")[1].split(",")
 
 
 def pickUpBomb():

@@ -9,12 +9,18 @@ def lstAvg(lst):
     return int(sum(lst) / len(lst))
 
 
-def takeScreenshot():
-    # TODO change this to full screen, this
-    # is only for my second monitor
-    image = pyautogui.screenshot(region=(1920, 0, 1920, 1080))
+def takeScreenshot(bomb, region=[0, 0, 1, 1]):
+    image = pyautogui.screenshot(
+        region=(
+            getPixelFromPercentage(bomb, x=region[0]),
+            getPixelFromPercentage(bomb, y=region[1]),
+            getPixelFromPercentage(
+                bomb, x=region[2]) - getPixelFromPercentage(bomb, x=region[0]),
+            getPixelFromPercentage(
+                bomb, y=region[3]) - getPixelFromPercentage(bomb, y=region[1])
+        ),)
     cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-    cv2.imwrite("screen.png", cv_image)
+    cv2.imwrite(str(int(round(time.time() * 1000))) + "screen.png", cv_image)
 
     return cv_image
 
@@ -59,3 +65,17 @@ def averages(matches):
         y_list.append(point[1])
 
     return (lstAvg(x_list), lstAvg(y_list),)
+
+
+def getPixelFromPercentage(bomb, x=-1, y=-1):
+    x1 = int(bomb.settings['gameWindowLoc'][0])
+    y1 = int(bomb.settings['gameWindowLoc'][1])
+    x2 = int(bomb.settings['gameWindowLoc'][2])
+    y2 = int(bomb.settings['gameWindowLoc'][3])
+
+    if x != -1:
+        return (x2 - x1) * x + x1
+    elif y != -1:
+        return (y2 - y1) * y + y1
+
+    raise ValueError('Either x or y must not be 0', x, y)
