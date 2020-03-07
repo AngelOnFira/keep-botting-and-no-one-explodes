@@ -7,6 +7,7 @@ from os.path import isfile, join
 
 from modules.feature_detection.functions import takeScreenshot, matchImages, averages, getPixelFromPercentage
 from modules.controller.controller import clickAtLocation, moveToLocation
+from modules.logic import button, memory, wires_complicated, wires_simple
 
 MODULES_DIRECTORY = './images/modules'
 
@@ -15,7 +16,8 @@ moduleReferences = {}
 
 for f in listdir(MODULES_DIRECTORY):
     if isfile(join(MODULES_DIRECTORY, f)):
-        moduleReferences[f] = cv2.imread(join(MODULES_DIRECTORY, f), 0)
+        moduleReferences[f.split(".")[0]] = cv2.imread(
+            join(MODULES_DIRECTORY, f), 0)
 
 
 def segmentBomb(bomb):
@@ -31,15 +33,18 @@ def segmentBomb(bomb):
         [0.59, 0.51, 0.73, 0.76],
     ]
 
-    for module in moduleLocations:
-        moduleFound = takeScreenshot(bomb, module)
-        moduleGuess = detectModule(moduleFound)
-        print(moduleGuess[2])
-
     moveToLocation((
         getPixelFromPercentage(bomb, x=0.0),
         getPixelFromPercentage(bomb, y=0.0),
     ))
+
+    # TODO this enumerate will only work for one side
+    for module, i in enumerate(moduleLocations):
+        moduleFound = takeScreenshot(bomb, module)
+        moduleGuess = detectModule(moduleFound)
+
+        bomb.modules[i] = moduleGuess[2]
+
     # take a screnshot
     # segment into 6 images, this is deterministic
     # for each image, use detectModule() to see which one it is
@@ -89,3 +94,13 @@ def pickUpBomb(bomb):
 
     # Wait for the bomb to be picked up
     time.sleep(0.5)
+
+
+def solveModules(bomb):
+    for key, value in bomb.modules:
+        if value == "simple-wires":
+            pass
+            # here I will call my simple wires functions
+        elif value == "memory":
+            pass
+            # others can add their stuff in their own if
