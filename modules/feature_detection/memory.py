@@ -4,10 +4,7 @@ import numpy as np
 from os import listdir
 from os.path import isfile, join
 
-# can this be removed?
-pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-
-DISPLAYS_DIRECTORY = "./displays"
+DISPLAYS_DIR = "../../images/modules/feature_detection/memory/displays"
 
 class ColourRange:
 
@@ -16,33 +13,6 @@ class ColourRange:
 		self.max = np.array(max, np.uint8)
 
 BROWN = ColourRange([15,65,38], [25,83,55])
-
-# as provided by opencv-python's documentation
-def harrisCorner(img):
-	gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-
-	# find Harris corners
-	gray = np.float32(gray)
-	dst = cv.cornerHarris(gray,2,3,0.04)
-	dst = cv.dilate(dst,None)
-	ret, dst = cv.threshold(dst,0.01*dst.max(),255,0)
-	dst = np.uint8(dst)
-
-	# find centroids
-	ret, labels, stats, centroids = cv.connectedComponentsWithStats(dst)
-
-	# define the criteria to stop and refine the corners
-	criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 100, 0.001)
-	corners = cv.cornerSubPix(gray,np.float32(centroids),(5,5),(-1,-1),criteria)
-
-	# Now draw them
-	res = np.hstack((centroids,corners))
-	res = np.int0(res)
-	img[res[:,1],res[:,0]]=[0,0,255]
-	img[res[:,3],res[:,2]] = [0,255,0]
-
-	cv.imshow('harris', img)
-	return img
 
 def extract_text_helper(img, hsv, c_range, img_out=None):
 	mask = cv.inRange(hsv, c_range.min, c_range.max)
@@ -91,9 +61,9 @@ def detectDisplay(displayImg):
     # Load array of images
     displayReferences = []
 
-    for f in listdir(DISPLAYS_DIRECTORY):
-        if isfile(join(DISPLAYS_DIRECTORY, f)):
-            displayReferences += [cv.imread(join(DISPLAYS_DIRECTORY, f), 0)]
+    for f in listdir(DISPLAYS_DIR):
+        if isfile(join(DISPLAYS_DIR, f)):
+            displayReferences += [cv.imread(join(DISPLAYS_DIR, f), 0)]
 
     # Check displayImg against each
     displayMatches = []
@@ -108,7 +78,6 @@ def detectDisplay(displayImg):
     return min(displayMatches, key=lambda match: match[1])[0]
 
 def extract_text(img, img_out=None):
-	#img = harrisCorner(img) # odd, but it currently only seems to register the buttons after applying Harris Corner
 	hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 	#if img_out is not None:
 	#	img_out += '_display'
