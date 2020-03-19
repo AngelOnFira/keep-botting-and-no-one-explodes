@@ -1,4 +1,3 @@
-import pyautogui
 import cv2
 import numpy as np
 import os
@@ -7,23 +6,6 @@ import time
 
 def lstAvg(lst):
     return int(sum(lst) / len(lst))
-
-
-def takeScreenshot(bomb, region=[0, 0, 1, 1]):
-    image = pyautogui.screenshot(
-        region=(
-            getPixelFromPercentage(bomb, x=region[0]),
-            getPixelFromPercentage(bomb, y=region[1]),
-            getPixelFromPercentage(
-                bomb, x=region[2]) - getPixelFromPercentage(bomb, x=region[0]),
-            getPixelFromPercentage(
-                bomb, y=region[3]) - getPixelFromPercentage(bomb, y=region[1])
-        ),)
-    cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-    cv2.imwrite(str(int(round(time.time() * 1000))) + "screen.png", cv_image)
-
-    return cv_image
-
 
 def matchImages(img1, img2, numPoints):
     # TODO when loading images, throw out

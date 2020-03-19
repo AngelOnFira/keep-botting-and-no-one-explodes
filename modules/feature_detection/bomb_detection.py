@@ -1,12 +1,11 @@
 import cv2
-import pyautogui
 import numpy as np
 import time
 from os import listdir
 from os.path import isfile, join
 
-from modules.feature_detection.functions import takeScreenshot, matchImages, averages, getPixelFromPercentage
-from modules.controller.controller import clickAtLocation, moveToLocation
+from modules.feature_detection.functions import matchImages, averages, getPixelFromPercentage
+from modules.controller.controller import clickAtLocation, moveToLocation, takeScreenshot
 from modules.logic import button, memory, wires_complicated, wires_simple
 
 MODULES_DIRECTORY = './images/modules'
