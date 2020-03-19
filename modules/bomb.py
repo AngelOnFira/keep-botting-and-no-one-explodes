@@ -1,8 +1,6 @@
 from modules.functions import loadSettingsFile, getWindowPosition
 from modules.feature_detection.bomb_detection import pickUpBomb, segmentBomb, solveModules
 import time
-import pyautogui
-
 
 class Bomb:
     serial = ""
