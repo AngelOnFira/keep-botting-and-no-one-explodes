@@ -1,17 +1,19 @@
 from modules.bomb import Bomb
-from modules.feature_detection.bomb_detection import detectVisibleFeatures
 
-bomb = new Bomb()
+bomb = Bomb()
+bomb.loadSettings()
 
-# pick up the bomb
+bomb.initialAnalysis()
 
-detectVisibleFeatures(bomb)
+findMemoryModule()
+
+# detectVisibleFeatures(bomb)
 
 # rotate bomb to the other side
 
-detectVisibleFeatures(bomb)
+# detectVisibleFeatures(bomb)
 
-for module in bomb.modules:
-    # solve the module
-    # execute the solution
-    pass
+# for module in bomb.modules:
+#     # solve the module
+#     # execute the solution
+#     pass
