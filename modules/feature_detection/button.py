@@ -10,9 +10,10 @@ def extractStripColour(img, img_out=None):
 	resized_img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 	cropped_img = resized_img[136:256, 240:266]
 
+	# Colour boundaries may need tweaking to improve success rate
 	blue_boundaries   = [[86, 31, 4], [255, 120, 50]]
-	yellow_boundaries = [[0, 200, 200], [15, 255, 255]]
-	white_boundaries  = [[200,200,200],[255,255,255]]
+	yellow_boundaries = [[0, 170, 200], [15, 255, 255]]
+	white_boundaries  = [[180,180,180],[255,255,255]]
 
 	y = cropped_img.shape[0]
 	x = cropped_img.shape[1]
@@ -31,7 +32,7 @@ def extractStripColour(img, img_out=None):
 			pixelcount += 1
 
 	average_strip_colour = [round(strip_colour_index0/pixelcount), round(strip_colour_index1/pixelcount), round(strip_colour_index2/pixelcount)]
-	#print(average_strip_colour)
+	#print(average_strip_colour) -> Useful for debugging colour boundaries
 
 	if extractStripColourHelper(average_strip_colour, white_boundaries):
 		return "WHITE"
