@@ -59,7 +59,7 @@ marker = "python_version < \"3.8\""
 name = "importlib-metadata"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-version = "1.5.0"
+version = "1.4.0"
 
 [package.dependencies]
 zipp = ">=0.5"
@@ -82,7 +82,7 @@ description = "More routines for operating on iterables, beyond itertools"
 name = "more-itertools"
 optional = false
 python-versions = ">=3.5"
-version = "8.2.0"
+version = "8.1.0"
 
 [[package]]
 category = "main"
@@ -119,7 +119,7 @@ description = "Wrapper package for OpenCV python bindings."
 name = "opencv-contrib-python"
 optional = false
 python-versions = "*"
-version = "4.2.0.32"
+version = "4.1.2.30"
 
 [package.dependencies]
 numpy = ">=1.11.1"
@@ -130,7 +130,7 @@ description = "Core utilities for Python packages"
 name = "packaging"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "20.3"
+version = "20.0"
 
 [package.dependencies]
 pyparsing = ">=2.0.2"
@@ -347,7 +347,7 @@ pyobjc-framework-libdispatch = "6.1"
 [[package]]
 category = "main"
 description = "Python<->ObjC Interoperability Module"
-marker = "platform_system == \"Darwin\" and platform_release >= \"9.0\" or platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release < \"12.0\" or platform_system == \"Darwin\" and platform_release < \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"10.0\" or platform_release >= \"10.0\" and platform_release < \"13.0\" and platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release >= \"11.0\" or platform_system == \"Darwin\" and platform_release >= \"12.0\" or platform_system == \"Darwin\" and platform_release >= \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"14.0\" or platform_system == \"Darwin\" and platform_release >= \"15.0\" or platform_system == \"Darwin\" and platform_release >= \"16.0\" or platform_system == \"Darwin\" and platform_release >= \"17.0\" or platform_system == \"Darwin\" and platform_release >= \"18.0\" or platform_system == \"Darwin\" and platform_release >= \"19.0\" or platform_release >= \"9.0\" and platform_release < \"11.0\" and platform_system == \"Darwin\" or platform_release >= \"9.0\" and platform_release < \"19.0\" and platform_system == \"Darwin\""
+marker = "platform_system == \"Darwin\" and platform_release < \"12.0\" or platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release < \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"10.0\" or platform_release >= \"10.0\" and platform_release < \"13.0\" and platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release >= \"11.0\" or platform_system == \"Darwin\" and platform_release >= \"12.0\" or platform_system == \"Darwin\" and platform_release >= \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"14.0\" or platform_system == \"Darwin\" and platform_release >= \"15.0\" or platform_system == \"Darwin\" and platform_release >= \"16.0\" or platform_system == \"Darwin\" and platform_release >= \"17.0\" or platform_system == \"Darwin\" and platform_release >= \"18.0\" or platform_system == \"Darwin\" and platform_release >= \"19.0\" or platform_system == \"Darwin\" and platform_release >= \"9.0\" or platform_release >= \"9.0\" and platform_release < \"11.0\" and platform_system == \"Darwin\" or platform_release >= \"9.0\" and platform_release < \"19.0\" and platform_system == \"Darwin\""
 name = "pyobjc-core"
 optional = false
 python-versions = ">=3.6"
@@ -545,7 +545,7 @@ pyobjc-framework-CoreLocation = ">=6.1"
 [[package]]
 category = "main"
 description = "Wrappers for the Cocoa frameworks on macOS"
-marker = "platform_system == \"Darwin\" and platform_release >= \"9.0\" or platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release < \"12.0\" or platform_system == \"Darwin\" and platform_release < \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"10.0\" or platform_release >= \"10.0\" and platform_release < \"13.0\" and platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release >= \"11.0\" or platform_system == \"Darwin\" and platform_release >= \"12.0\" or platform_system == \"Darwin\" and platform_release >= \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"14.0\" or platform_system == \"Darwin\" and platform_release >= \"15.0\" or platform_system == \"Darwin\" and platform_release >= \"16.0\" or platform_system == \"Darwin\" and platform_release >= \"17.0\" or platform_system == \"Darwin\" and platform_release >= \"18.0\" or platform_system == \"Darwin\" and platform_release >= \"19.0\" or platform_release >= \"9.0\" and platform_release < \"11.0\" and platform_system == \"Darwin\" or platform_release >= \"9.0\" and platform_release < \"19.0\" and platform_system == \"Darwin\""
+marker = "platform_system == \"Darwin\" and platform_release < \"12.0\" or platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release < \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"10.0\" or platform_release >= \"10.0\" and platform_release < \"13.0\" and platform_system == \"Darwin\" or platform_system == \"Darwin\" and platform_release >= \"11.0\" or platform_system == \"Darwin\" and platform_release >= \"12.0\" or platform_system == \"Darwin\" and platform_release >= \"13.0\" or platform_system == \"Darwin\" and platform_release >= \"14.0\" or platform_system == \"Darwin\" and platform_release >= \"15.0\" or platform_system == \"Darwin\" and platform_release >= \"16.0\" or platform_system == \"Darwin\" and platform_release >= \"17.0\" or platform_system == \"Darwin\" and platform_release >= \"18.0\" or platform_system == \"Darwin\" and platform_release >= \"19.0\" or platform_system == \"Darwin\" and platform_release >= \"9.0\" or platform_release >= \"9.0\" and platform_release < \"11.0\" and platform_system == \"Darwin\" or platform_release >= \"9.0\" and platform_release < \"19.0\" and platform_system == \"Darwin\""
 name = "pyobjc-framework-cocoa"
 optional = false
 python-versions = ">=3.6"
@@ -1949,7 +1949,7 @@ description = "pytest: simple powerful testing with Python"
 name = "pytest"
 optional = false
 python-versions = ">=3.5"
-version = "5.3.5"
+version = "5.3.4"
 
 [package.dependencies]
 atomicwrites = ">=1.0"
@@ -2023,14 +2023,17 @@ marker = "python_version < \"3.8\""
 name = "zipp"
 optional = false
 python-versions = ">=3.6"
-version = "3.1.0"
+version = "2.0.0"
+
+[package.dependencies]
+more-itertools = "*"
 
 [package.extras]
 docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
-testing = ["jaraco.itertools", "func-timeout"]
+testing = ["pathlib2", "contextlib2", "unittest2"]
 
 [metadata]
-content-hash = "4366e1766fb70741ea86c81037a59b581b78a6f152eedd9e698007d9bf3cc130"
+content-hash = "019b0e3979b876d62e54ff17caadc90af78b0caac302a6e1173d657d8d12fd0f"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -2083,15 +2086,15 @@ coverage = [
     {file = "coverage-5.0.3.tar.gz", hash = "sha256:77afca04240c40450c331fa796b3eab6f1e15c5ecf8bf2b8bee9706cd5452fef"},
 ]
 importlib-metadata = [
-    {file = "importlib_metadata-1.5.0-py2.py3-none-any.whl", hash = "sha256:b97607a1a18a5100839aec1dc26a1ea17ee0d93b20b0f008d80a5a050afb200b"},
-    {file = "importlib_metadata-1.5.0.tar.gz", hash = "sha256:06f5b3a99029c7134207dd882428a66992a9de2bef7c2b699b5641f9886c3302"},
+    {file = "importlib_metadata-1.4.0-py2.py3-none-any.whl", hash = "sha256:bdd9b7c397c273bcc9a11d6629a38487cd07154fa255a467bf704cd2c258e359"},
+    {file = "importlib_metadata-1.4.0.tar.gz", hash = "sha256:f17c015735e1a88296994c0697ecea7e11db24290941983b08c9feb30921e6d8"},
 ]
 imutils = [
     {file = "imutils-0.5.3.tar.gz", hash = "sha256:857af6169d90e4a0a814130b9b107f5d611150ce440107e1c1233521c6fb1e2b"},
 ]
 more-itertools = [
-    {file = "more-itertools-8.2.0.tar.gz", hash = "sha256:b1ddb932186d8a6ac451e1d95844b382f55e12686d51ca0c68b6f61f2ab7a507"},
-    {file = "more_itertools-8.2.0-py3-none-any.whl", hash = "sha256:5dd8bcf33e5f9513ffa06d5ad33d78f31e1931ac9a18f33d37e77a180d393a7c"},
+    {file = "more-itertools-8.1.0.tar.gz", hash = "sha256:c468adec578380b6281a114cb8a5db34eb1116277da92d7c46f904f0b52d3288"},
+    {file = "more_itertools-8.1.0-py3-none-any.whl", hash = "sha256:1a2a32c72400d365000412fe08eb4a24ebee89997c18d3d147544f70f5403b39"},
 ]
 mouseinfo = [
     {file = "MouseInfo-0.1.2.tar.gz", hash = "sha256:00ea0c2410c7cada53e6c831fd70dafeb6cbc04b2ab09b099f8e97a8743d35b1"},
@@ -2120,37 +2123,37 @@ numpy = [
     {file = "numpy-1.18.1.zip", hash = "sha256:b6ff59cee96b454516e47e7721098e6ceebef435e3e21ac2d6c3b8b02628eb77"},
 ]
 opencv-contrib-python = [
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:915e2e04ba6787fa6254427cef5c39d2b2267f47e8f5035d8be3bff7ead85a14"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:f8e13df213a0c21c179fbe6dbe63e4865e2ac22665bd8546f2a92885e98d1137"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:069fc51ffed441303020bad92b61b13c128241fa8786923c9cfb848b2f67a5e0"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27m-win32.whl", hash = "sha256:7d02143db8d63d0532783b6f676887dd49ddb29c78044060b9edb07308a456ba"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27m-win_amd64.whl", hash = "sha256:f6956a63264fe418eb7ddc57fd445a4971d0a6b541b30deacaa8f5a8b8ed93ac"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:605c400d7bd0d7f36fe781a1f9ae9ff253d3a3d6159300ad0f7d563a6608b72b"},
-    {file = "opencv_contrib_python-4.2.0.32-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:9348407ea84650985b2adfb2deafb877a930132e74cfd5103b50c1fbd778f8ad"},
-    {file = "opencv_contrib_python-4.2.0.32-cp35-cp35m-macosx_10_9_x86_64.whl", hash = "sha256:fcf4e127329fc13e5f791f86d3ec425a3d2bf1133172d7fcb541d5029a467c90"},
-    {file = "opencv_contrib_python-4.2.0.32-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:12f9240520b734c15623cd35c9efbde6cffa77188f4870e700a35a81f588af06"},
-    {file = "opencv_contrib_python-4.2.0.32-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:263a47619bff83661aad01eb84bcc534562815b8d67be12d09e9b336071b7dbf"},
-    {file = "opencv_contrib_python-4.2.0.32-cp35-cp35m-win32.whl", hash = "sha256:6067597a8214eaa3d1197aac3eeee9bae506ab7dc0e8a32ee9bf89c9ace9baa0"},
-    {file = "opencv_contrib_python-4.2.0.32-cp35-cp35m-win_amd64.whl", hash = "sha256:3eefaea717887c1cb2479e4fdf7e311516547bd046ba4a38b9af88698a8bc2a6"},
-    {file = "opencv_contrib_python-4.2.0.32-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:59a80f0bbaee09dad0ff9800b22bcee9f9432a645e25be49922782ceb4500bfd"},
-    {file = "opencv_contrib_python-4.2.0.32-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:35e8d8105ffa547c826a23ca4508b5d3df970a88547c2249412022a82f70ff38"},
-    {file = "opencv_contrib_python-4.2.0.32-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:564eec2471439ef7e5835a5c7ec4e379575cd2f115a3f4c67d8ae8078a47a7fd"},
-    {file = "opencv_contrib_python-4.2.0.32-cp36-cp36m-win32.whl", hash = "sha256:abaf26a69a33460497f3091fc7dba4aa22ac9375ca3f14c4369249e060e6ba37"},
-    {file = "opencv_contrib_python-4.2.0.32-cp36-cp36m-win_amd64.whl", hash = "sha256:91b29762634f20e3bafe7bc2c9361aeb48efb8bf8bf33f47d5985fea9fcad0cf"},
-    {file = "opencv_contrib_python-4.2.0.32-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:f24040c6e39052713c38b3d16c325254b3f31800050ba52227af1db601555353"},
-    {file = "opencv_contrib_python-4.2.0.32-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:45e309faf3a506d46a140b6f3ac3ccd39577ed88e761d9092c52222b764a50b7"},
-    {file = "opencv_contrib_python-4.2.0.32-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:0297312747faa98b2a0654cfc9a78392ba36c67c7b60ab2b152fcc5ac01f831b"},
-    {file = "opencv_contrib_python-4.2.0.32-cp37-cp37m-win32.whl", hash = "sha256:94f65972445ea02bc69632b0f6ab7ac27b6db5298d02d36ffa79fe9f9170cfe6"},
-    {file = "opencv_contrib_python-4.2.0.32-cp37-cp37m-win_amd64.whl", hash = "sha256:d603ceaccc32c62a07bc364416a09b786bb083c1c8aab72e03a335094aa21b20"},
-    {file = "opencv_contrib_python-4.2.0.32-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:890686dcde29609023961243533c23b2e4d9d0d1cf9b4d26ccb5f6051219dc52"},
-    {file = "opencv_contrib_python-4.2.0.32-cp38-cp38-manylinux1_i686.whl", hash = "sha256:c502da0b2b033f7574888b95037bb4b4a534ab44e3eb7e7d0543053a69c2d9ce"},
-    {file = "opencv_contrib_python-4.2.0.32-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:95659d03ff63d653b38ea60f5bd704c55ac99eb8ccb7109bda8d5e5c8c90e368"},
-    {file = "opencv_contrib_python-4.2.0.32-cp38-cp38-win32.whl", hash = "sha256:3198fb276962c61eab1f105307a7e24da846dd99c1933f042cfcac710bc7cfb2"},
-    {file = "opencv_contrib_python-4.2.0.32-cp38-cp38-win_amd64.whl", hash = "sha256:bdfd6dbc14e1ca65aa87d9bdf63966c0880d2778f2d6ae92a7351d2a17ad510d"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:18cc04cbb03ad5ac1a9bfc5f909fb1435f7cbf3a9c9453da6dabb2f2a90b8fb1"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:53194df820da959658f72dd9d4dc8421c43e464706c8a6ce8315a94a16e2eba6"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:36efcc33a91149cb9bec80664b866509632dd0707b0a06982322c869b6c92056"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27m-win32.whl", hash = "sha256:eb94f12d81c7eeff73c08f016fdc28bd949db3372a7507d7f02dcc65396a64f8"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27m-win_amd64.whl", hash = "sha256:1f80cab0304f4cb2a4226d5d2a74084b0dca391f351686d5e59b861a43e63286"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:f6559a58bc0277ebb47b8ee8070c73f37d2b3d71b571c2db8e65705a89a5af90"},
+    {file = "opencv_contrib_python-4.1.2.30-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:fe2a2af5787d80757692284146a1a8210423c9679bab9d4ef3a33503a102315b"},
+    {file = "opencv_contrib_python-4.1.2.30-cp35-cp35m-macosx_10_9_x86_64.whl", hash = "sha256:ac968405976a86d35da933b2e3c222b88bd4ae920881047c452a2354423621a8"},
+    {file = "opencv_contrib_python-4.1.2.30-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:a3cafb855e292c80ceeb83e3d6eb31a0897901ad1c2b92425d5638a30d4904d9"},
+    {file = "opencv_contrib_python-4.1.2.30-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:103faa075c4b087a94e4bf16264653dc17bdf0a1128e7b91f7e01f9b070e221d"},
+    {file = "opencv_contrib_python-4.1.2.30-cp35-cp35m-win32.whl", hash = "sha256:8ba5109729281f72126ad2cea767e72937481ac47e5d7169fdf488f55fbcc1c7"},
+    {file = "opencv_contrib_python-4.1.2.30-cp35-cp35m-win_amd64.whl", hash = "sha256:b4713a36fe47466a78624ecf7efc7e251015c61ec24929ba439a13805a50a3ff"},
+    {file = "opencv_contrib_python-4.1.2.30-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:b7f3210ab5585ced2aab5199888b3fa3e75d1b84382cf891c74b5c11d9a69967"},
+    {file = "opencv_contrib_python-4.1.2.30-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:174eb016cc9186eb56e3ca381d1f684b5f2976f86000be2ec237394208c6b2f1"},
+    {file = "opencv_contrib_python-4.1.2.30-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:1bd955bfde43a1c4cc52687955548f8931d01d558cfefc17e07269c2cd7dc9f7"},
+    {file = "opencv_contrib_python-4.1.2.30-cp36-cp36m-win32.whl", hash = "sha256:77aa8368b5adf217b97d238e09ab263a367640052e64137952f73f328ed0ed5e"},
+    {file = "opencv_contrib_python-4.1.2.30-cp36-cp36m-win_amd64.whl", hash = "sha256:03a18245917acada8e69dd3171c75147cc8cac1aa9d3e5a3ffd346187d35d84b"},
+    {file = "opencv_contrib_python-4.1.2.30-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:90d63ee7d40090b71fd9d2db63ad39f7e9a050a56c3c050a327a432cde16c14b"},
+    {file = "opencv_contrib_python-4.1.2.30-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:bfff087e02522cc9a465ecb473ddd531c1c8308ed2a5aafed17b26c4e71c9a81"},
+    {file = "opencv_contrib_python-4.1.2.30-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:1cd1343832de47faf6f7961a685a9d53dd36f77533c6f587406ac894f0fa7777"},
+    {file = "opencv_contrib_python-4.1.2.30-cp37-cp37m-win32.whl", hash = "sha256:c8d3353f829d2cad6aaf2dcf8b73cef639533930a767cb0c31a4d9e32b99a4df"},
+    {file = "opencv_contrib_python-4.1.2.30-cp37-cp37m-win_amd64.whl", hash = "sha256:4e271d3c312500dc7c4ce44b6b882927481a0e02812cf8e7d239fa3749ce705e"},
+    {file = "opencv_contrib_python-4.1.2.30-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:3dcbe2214828349f3e588e33802fa6be17fdd28243185d7fe97e595779952ced"},
+    {file = "opencv_contrib_python-4.1.2.30-cp38-cp38-manylinux1_i686.whl", hash = "sha256:302d4a2e8d39da9f2140d94ac9a0607b18db4c8dfaef6c1de4783de1533b26f3"},
+    {file = "opencv_contrib_python-4.1.2.30-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:85e3dfc349626a8a49bbb57cf2e835a524b16b78fc76be605acf12998276d900"},
+    {file = "opencv_contrib_python-4.1.2.30-cp38-cp38-win32.whl", hash = "sha256:6ad182b2c88691938eca7a16b5bdb690fec1f58c87c34e605931ffb7b7dbacc1"},
+    {file = "opencv_contrib_python-4.1.2.30-cp38-cp38-win_amd64.whl", hash = "sha256:d85eb7116979247b72f2b0f2c8019b8e8334e0c27bcc8722a3c1a868bf8f0c32"},
 ]
 packaging = [
-    {file = "packaging-20.3-py2.py3-none-any.whl", hash = "sha256:82f77b9bee21c1bafbf35a84905d604d5d1223801d639cf3ed140bd651c08752"},
-    {file = "packaging-20.3.tar.gz", hash = "sha256:3c292b474fda1671ec57d46d739d072bfd495a4f51ad01a055121d81e952b7a3"},
+    {file = "packaging-20.0-py2.py3-none-any.whl", hash = "sha256:aec3fdbb8bc9e4bb65f0634b9f551ced63983a529d6a8931817d52fdd0816ddb"},
+    {file = "packaging-20.0.tar.gz", hash = "sha256:fe1d8331dfa7cc0a883b49d75fc76380b2ab2734b220fbb87d774e4fd4b851f8"},
 ]
 pillow = [
     {file = "Pillow-7.0.0-cp35-cp35m-macosx_10_6_intel.whl", hash = "sha256:5f3546ceb08089cedb9e8ff7e3f6a7042bb5b37c2a95d392fb027c3e53a2da00"},
@@ -2812,8 +2815,8 @@ pytesseract = [
     {file = "pytesseract-0.3.2.tar.gz", hash = "sha256:a8c3b74977e8fba6387f483f91f35e59e2ae7f34dfeff2028dc83adcd2afd0ac"},
 ]
 pytest = [
-    {file = "pytest-5.3.5-py3-none-any.whl", hash = "sha256:ff615c761e25eb25df19edddc0b970302d2a9091fbce0e7213298d85fb61fef6"},
-    {file = "pytest-5.3.5.tar.gz", hash = "sha256:0d5fe9189a148acc3c3eb2ac8e1ac0742cb7618c084f3d228baaec0c254b318d"},
+    {file = "pytest-5.3.4-py3-none-any.whl", hash = "sha256:c13d1943c63e599b98cf118fcb9703e4d7bde7caa9a432567bcdcae4bf512d20"},
+    {file = "pytest-5.3.4.tar.gz", hash = "sha256:1d122e8be54d1a709e56f82e2d85dcba3018313d64647f38a91aec88c239b600"},
 ]
 pytest-cov = [
     {file = "pytest-cov-2.8.1.tar.gz", hash = "sha256:cc6742d8bac45070217169f5f72ceee1e0e55b0221f54bcf24845972d3a47f2b"},
@@ -2834,6 +2837,6 @@ wcwidth = [
     {file = "wcwidth-0.1.8.tar.gz", hash = "sha256:f28b3e8a6483e5d49e7f8949ac1a78314e740333ae305b4ba5defd3e74fb37a8"},
 ]
 zipp = [
-    {file = "zipp-3.1.0-py3-none-any.whl", hash = "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b"},
-    {file = "zipp-3.1.0.tar.gz", hash = "sha256:c599e4d75c98f6798c509911d08a22e6c021d074469042177c8c86fb92eefd96"},
+    {file = "zipp-2.0.0-py3-none-any.whl", hash = "sha256:57147f6b0403b59f33fd357f169f860e031303415aeb7d04ede4839d23905ab8"},
+    {file = "zipp-2.0.0.tar.gz", hash = "sha256:7ae5ccaca427bafa9760ac3cd8f8c244bfc259794b5b6bb9db4dda2241575d09"},
 ]
