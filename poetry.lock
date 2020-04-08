@@ -1933,6 +1933,17 @@ python = ">=3.8,<3.9"
 version = ">=6.2.1"
 
 [[package]]
+category = "main"
+description = "Python-tesseract is a python wrapper for Google's Tesseract-OCR"
+name = "pytesseract"
+optional = false
+python-versions = "*"
+version = "0.3.2"
+
+[package.dependencies]
+Pillow = "*"
+
+[[package]]
 category = "dev"
 description = "pytest: simple powerful testing with Python"
 name = "pytest"
@@ -2799,6 +2810,9 @@ pyrect = [
 ]
 pyscreeze = [
     {file = "PyScreeze-0.1.26.tar.gz", hash = "sha256:224963114176208eee13b0b984de1f5fdc11b7393ce48ad2b52390dc8855d346"},
+]
+pytesseract = [
+    {file = "pytesseract-0.3.2.tar.gz", hash = "sha256:a8c3b74977e8fba6387f483f91f35e59e2ae7f34dfeff2028dc83adcd2afd0ac"},
 ]
 pytest = [
     {file = "pytest-5.3.4-py3-none-any.whl", hash = "sha256:c13d1943c63e599b98cf118fcb9703e4d7bde7caa9a432567bcdcae4bf512d20"},
