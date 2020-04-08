@@ -2,9 +2,9 @@ import cv2 as cv
 import pytesseract
 import numpy as np
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, splitext
 
-DISPLAYS_DIR = "../../images/modules/feature_detection/memory/displays"
+DISPLAYS_DIR = "images/modules/feature_detection/memory/displays"
 
 class ColourRange:
 
@@ -59,39 +59,50 @@ def detectDisplay(displayImg):
     # Have a module image passed in, figure out which one it is
 
     # Load array of images
-    displayReferences = []
+    displayReferences = {}
 
     for f in listdir(DISPLAYS_DIR):
         if isfile(join(DISPLAYS_DIR, f)):
-            displayReferences += [cv.imread(join(DISPLAYS_DIR, f), 0)]
+            displayReferences[f] = cv.imread(join(DISPLAYS_DIR, f), 0)
 
     # Check displayImg against each
-    displayMatches = []
+    displayMatches = {}
 
-    for reference in displayReferences:
-        # [[reference, sumDistance], ...]
+    for f in displayReferences.keys():
+        filename = splitext(f)[0]
+        reference = displayReferences[f]
+    	# [[reference, sumDistance], ...]
         matches = matchImages(displayImg, reference, 10)
-        displayMatches.append(
-            (reference, sum([m.distance for m in matches[1]])))
+        displayMatches[filename] = (reference, sum([m.distance for m in matches[1]]))
 
-    # Return most likely image
-    return min(displayMatches, key=lambda match: match[1])[0]
+    # Return most likely image key
+    #minKey = min(displayMatches, key=displayMatches.get[1])
+    #minKey = "-1"
+#
+#    for k in displayMatches.keys():
+#        if displayMatches[k][1] == minVal:
+#            minKey = k
+#            break
+    listMatchRefs = list(displayMatches.keys())
+    listMatchVals = list(displayMatches.values())
+    minKey = listMatchRefs[listMatchVals.index(min(listMatchVals, key=lambda v: v[1]))]
+
+    return minKey, displayMatches[minKey][0]
 
 def extract_text(img, img_out=None):
 	hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 	#if img_out is not None:
 	#	img_out += '_display'
 	#display_text = extract_text_helper(img, hsv_img, WHITE, img_out)
+	matchRefNum, match = detectDisplay(img)
+
 	if img_out is not None:
 		img_out += '_display.png'
-		cv.imwrite(img_out, detectDisplay(img))
-
-	# To do: replace with actual report from detectDisplay
-	display_text = ""
+		cv.imwrite(img_out, match)
 
 	if img_out is not None:
 		img_out += '_buttons'
 
 	buttons_text = extract_text_helper(img, hsv_img, BROWN, img_out)
 
-	return (display_text, buttons_text)
+	return (matchRefNum, buttons_text)
