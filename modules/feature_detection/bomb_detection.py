@@ -106,7 +106,8 @@ def pickUpBomb(bomb):
 
 
 def solveModules(bomb):
-    for key, value in bomb.modules:
+    print("bomb.modules:\t", bomb.modules)
+    for key, value in bomb.modules.items():
         if value == "simple-wires":
             pass
             # here I will call my simple wires functions
