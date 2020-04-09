@@ -14,9 +14,15 @@ MODULES_DIRECTORY = './images/modules'
 moduleReferences = {}
 
 for f in listdir(MODULES_DIRECTORY):
-    if isfile(join(MODULES_DIRECTORY, f)):
-        moduleReferences[f.split(".")[0]] = cv2.imread(
-            join(MODULES_DIRECTORY, f), 0)
+    fp = join(MODULES_DIRECTORY, f)
+    if isfile(fp):
+        fn = f.split(".")[0]
+        if (fn == ""): # ignore the directory itself
+            continue
+        moduleReferences[fn] = cv2.imread(fp, 0)
+
+if len(moduleReferences) != 10:
+    raise Exception("Not 10")
 
 
 def segmentBomb(bomb):
@@ -38,7 +44,8 @@ def segmentBomb(bomb):
     ))
 
     # TODO this enumerate will only work for one side
-    for module, i in enumerate(moduleLocations):
+    for i, module in enumerate(moduleLocations):
+        print(module)
         moduleFound = takeScreenshot(bomb, module)
         moduleGuess = detectModule(moduleFound)
 
@@ -56,8 +63,11 @@ def detectModule(moduleImg):
     # Check moduleImg against each
     modulesMatches = []
 
-    for key in moduleReferences:
+    for key in moduleReferences.keys():
         # [[reference, sumDistance], ...]
+        print("key:", key)
+        print("ref:")
+        print(moduleReferences[key])
         matches = matchImages(moduleImg, moduleReferences[key], 10)
         modulesMatches.append(
             (moduleReferences[key], sum([m.distance for m in matches[1]]), key))
