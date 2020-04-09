@@ -45,7 +45,6 @@ def segmentBomb(bomb):
 
     # TODO this enumerate will only work for one side
     for i, module in enumerate(moduleLocations):
-        print(module)
         moduleFound = takeScreenshot(bomb, module)
         moduleGuess = detectModule(moduleFound)
 
@@ -65,9 +64,6 @@ def detectModule(moduleImg):
 
     for key in moduleReferences.keys():
         # [[reference, sumDistance], ...]
-        print("key:", key)
-        print("ref:")
-        print(moduleReferences[key])
         matches = matchImages(moduleImg, moduleReferences[key], 10)
         modulesMatches.append(
             (moduleReferences[key], sum([m.distance for m in matches[1]]), key))
@@ -106,7 +102,6 @@ def pickUpBomb(bomb):
 
 
 def solveModules(bomb):
-    print("bomb.modules:\t", bomb.modules)
     for key, value in bomb.modules.items():
         if value == "simple-wires":
             pass
