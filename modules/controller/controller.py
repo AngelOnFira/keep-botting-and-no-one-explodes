@@ -1,4 +1,7 @@
 import time
+import cv2
+import numpy as np
+from modules.feature_detection.functions import getPixelFromPercentage
 
 from pyvirtualdisplay import Display
 v_display = Display(visible=1, size=(1600,900))
