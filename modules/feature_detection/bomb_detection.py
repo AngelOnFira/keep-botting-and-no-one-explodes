@@ -5,8 +5,11 @@ from os import listdir
 from os.path import isfile, join
 
 from modules.feature_detection.functions import matchImages, averages, getPixelFromPercentage
-from modules.controller.controller import clickAtLocation, moveToLocation, takeScreenshot
+from modules.feature_detection.memory import extract_text
+from modules.controller.controller import clickAtLocation, moveToLocation, takeScreenshot, zoomOut
 from modules.logic import button, memory, wires_complicated, wires_simple
+from modules.controller.controller import SCREENSHOT_IMAGE_PATH
+from modules.logic.memory import Memory, Stage, Instruction
 
 MODULES_DIRECTORY = './images/modules'
 
@@ -21,8 +24,8 @@ for f in listdir(MODULES_DIRECTORY):
             continue
         moduleReferences[fn] = cv2.imread(fp, 0)
 
-if len(moduleReferences) != 10:
-    raise Exception("Not 10")
+if len(moduleReferences) != 11:
+    raise Exception("Not 11")
 
 
 def segmentBomb(bomb):
@@ -30,24 +33,25 @@ def segmentBomb(bomb):
     # top left and bottom right points as percentages
     # of the way across the screen
     moduleLocations = [
-        [0.30, 0.26, 0.43, 0.50],
+        [0.2759, 0.2562, 0.4382, 0.5128],
         [0.43, 0.26, 0.58, 0.50],
         [0.58, 0.26, 0.73, 0.50],
-        [0.29, 0.51, 0.43, 0.77],
+        [0.25, 0.51, 0.43, 0.77],
         [0.44, 0.51, 0.58, 0.76],
         [0.59, 0.51, 0.73, 0.76],
     ]
 
-    moveToLocation((
-        getPixelFromPercentage(bomb, x=0.0),
-        getPixelFromPercentage(bomb, y=0.0),
-    ))
+    x1 = getPixelFromPercentage(bomb, x=0.0)
+    y1 = getPixelFromPercentage(bomb, y=0.0)
+    x2 = getPixelFromPercentage(bomb, x=1.0)
+    y2 = getPixelFromPercentage(bomb, y=1.0)
 
     # TODO this enumerate will only work for one side
+    print("Detecting and capturing bomb modules...")
     for i, module in enumerate(moduleLocations):
-        moduleFound = takeScreenshot(bomb, module)
+        moduleFound = takeScreenshot(bomb, module, i)
         moduleGuess = detectModule(moduleFound)
-
+        print(str(i + 1) + "th module: " + str(moduleGuess[2]))
         bomb.modules[i] = moduleGuess[2]
 
     # take a screnshot
@@ -83,11 +87,17 @@ def detectVisibleFeatures(bomb):
     # add found features to bomb
 
 
-def findMemoryModule():
-    memory = cv2.imread('images/modules/memory.png', 0)
-
-    clickAtLocation(averages(matchImages(memory, takeScreenshot(), 10)[0]))
-
+def findMemoryModule(bomb):
+    moduleCoords = [[0.35705,0.3845],[0.505,0.38],[0.655,0.38],[0.36,0.64],[0.51,0.635],[0.66,0.635]]
+    module = None
+    for k, m in bomb.modules.items():
+        if m == "memory":
+            module = k
+    if module != None:
+        clickAtLocation((
+            getPixelFromPercentage(bomb, x=moduleCoords[module][0]),
+            getPixelFromPercentage(bomb, y=moduleCoords[module][1]),
+        ))
 
 def pickUpBomb(bomb):
     print(getPixelFromPercentage(bomb, x=0.5),
@@ -107,5 +117,41 @@ def solveModules(bomb):
             pass
             # here I will call my simple wires functions
         elif value == "memory":
-            pass
-            # others can add their stuff in their own if
+            findMemoryModule(bomb)
+            solveMemoryModule(bomb, key)
+
+def solveMemoryModule(bomb, moduleIdx):
+    print("Solving memory module")
+
+    solver = Memory()
+    
+    for level in range(1, 6):
+        time.sleep(3) # wait for buttons to be setup
+        screen = takeScreenshot(bomb)
+        memory_module = screen[875:1500, 1645:2265]
+
+        button_y = 663
+        button_x = [872.5, 921, 969, 1020]
+        
+        # button_image_list = [button1, button2, button3, button4]
+        display, buttons = extract_text(memory_module)
+        buttons = buttons.replace('8', '3')
+        buttons = buttons.replace('$', '3')
+
+        # print("level: " + str(level))
+        # print("display: " + str(display))
+        # print("buttons: " + str(buttons))
+
+        stage = Stage(level, int(display), [int(num) for num in buttons])
+        solution = solver.stageSolution(stage)
+        if solution.type == Instruction.Type.POSITION:
+            # print("Solution Type = Position")
+            buttonIndex = solution.value
+        else:
+            # print("Solution Type = Label")
+            buttonIndex = buttons.index(str(solution.value)) + 1
+        
+        print("Button position to press: " + str(buttonIndex))
+
+        clickAtLocation([button_x[buttonIndex - 1], button_y])
+        moveToLocation([50,50])

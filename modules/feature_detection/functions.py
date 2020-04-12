@@ -29,7 +29,7 @@ def matchImages(img1, img2, numPoints):
         output[0].append(dst_pts[i][0])
 
     img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches[:10], None, flags=2)
-    cv2.imwrite("tes.png", img3)
+    #cv2.imwrite("tes.png", img3)
 
     return output
 

@@ -107,3 +107,7 @@ venv.bak/
 .vscode/
 
 settings.txt
+
+images/modules_found/
+
+images/.DS_Store

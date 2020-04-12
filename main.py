@@ -5,8 +5,6 @@ bomb.loadSettings()
 
 bomb.initialAnalysis()
 
-findMemoryModule()
-
 # detectVisibleFeatures(bomb)
 
 # rotate bomb to the other side
