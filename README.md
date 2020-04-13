@@ -53,6 +53,7 @@ The Minimum Viable Product (MVP) for this project is to have KBE complete a triv
 * Calculating the solution for module
 * Executing the solution for module
 * Level complete
+
 The module that will be used in the MVP can be seen in the bottom right of Figure 1 (seen above). It will make use of simple OCR and does not require any other information from the bomb. This makes it a good goal to test out our system and includes a full game being played. This will be Deliverable 1.
 
 Once this is complete, we can extend our systems to encompass more modules. This will allow any level of the game to be played. This will be Deliverable 2, and also the end goal. If we achieve this before the project is over, some other tasks that can be done that aren’t essential:
