@@ -22,13 +22,13 @@ Keep Botting and No One Explodes (KBE) is a bot that can play "Keep Talking and 
 
 ## Background
 
-In “Keep Talking and No One Explodes”, a single player is the “Bomb Defuser” who interacts with and relays information about the bomb to one or more “Bomb Experts” who hold the [bomb defusal manual](http://www.bombmanual.com/web/index.html). The bomb defusal manual holds the key to solving each puzzle/module. The bomb experts, in turn, provide the bomb defuser with step-by-step instructions to progress through the various challenges of defusing the bomb. To defuse a bomb, the bomb defuser must disarm all of its modules before the countdown timer expires or before three strikes (bomb defusal failures) are made.
+In “Keep Talking and No One Explodes”, a single-player is the “Bomb Defuser” who interacts with and relays information about the bomb to one or more “Bomb Experts” who hold the [bomb information manual](http://www.bombmanual.com/web/index.html). The bomb information manual holds the key to solving each puzzle/module. The bomb experts, in turn, provide the bomb defuser with step-by-step instructions to progress through the various challenges of defusing the bomb. To defuse a bomb, the bomb defuser must disarm all of its modules before the countdown timer expires or before three strikes are made. Unable to do so, will cause the bomb to explode.
 
-Computer assistance has been used before to help play the game. A bot was created that could listen to instructions that a human bomb diffuser would give. It would solve a module, and speak the solution to the bomb defuser. You can see the bot defuse the bomb with human guidance [here](https://www.youtube.com/watch?v=psiyI6jVpKI). This bot still requires human interaction to analyze the visual information from the bomb. The key difference with their project and what we are trying to do is to eliminate the human interaction completely and have the bot defuse the bomb.
+Computer assistance has been used before to help play the game. A bot was created that could listen to instructions that a human bomb diffuser would give. It would solve a module, and speak the solution to the bomb defuser. You can see the bot defuse the bomb with human guidance [here](https://www.youtube.com/watch?v=psiyI6jVpKI). This bot still requires human interaction to analyze the visual information from the bomb. The key difference with their project and what we are trying to do is to eliminate the human interaction and have the bot defuse the bomb.
 
 ## Challenges
 
-There are different types of challenges that will have to be approached to defuse a bomb.
+Different types of challenges will have to be approached to defuse a bomb.
 
 ### Optical Character Recognition
 
@@ -46,8 +46,7 @@ Feature detection is where the majority of the OpenCV work will take place. We m
 
 ## Goals and Deliverables
 The Minimum Viable Product (MVP) for this project is to have KBE complete a trivial level in the game. This level will consist of the following:
-
-Picking up the bomb
+* Picking up the bomb
 * Identifying basic bomb features (time, battery count, etc…)
 * Identifying the single module to complete
 * Identifying the logic puzzle on the module
@@ -58,7 +57,7 @@ The module that will be used in the MVP can be seen in the bottom right of Figur
 
 Once this is complete, we can extend our systems to encompass more modules. This will allow any level of the game to be played. This will be Deliverable 2, and also the end goal. If we achieve this before the project is over, some other tasks that can be done that aren’t essential:
 
-The bot will be designed to solve bombs within certain parameters. It won’t take into account the screen resolution or rotation speed of controllers. Feature detection can be used to calibrate the bot prior to starting a solution.
+The bot will be designed to solve bombs within certain parameters. It won’t take into account the screen resolution or rotation speed of controllers. Feature detection can be used to calibrate the bot before starting a solution.
 Ability to visually describe what the bot is working on. The bot will go through its logic rapidly without user input, and so it will be difficult to know what it is doing. It might be possible to create an overlay video that highlights what the bot is analyzing at any given time. This would have to be a separate system to be implemented alongside each other.
 
 We will be able to easily record videos of the bot in progress. This can be used to see that the goal was achieved. We will have a video ready after deliverable 1 as well so that we can show the improvements at the end of the project.
@@ -78,6 +77,6 @@ This schedule will be used tentatively. We are doing project management within G
 | Complete 7/11 Modules:<br> - “Simple wires” module feature detection<br> - “On The Subject of Simon Says” |  MAR 7
 | Complete 9/11 Modules (Will require specific research):<br> - “On The Subject of Mazes”<br> - “On The Subject of Wire Sequences” | MAR 14
 | Complete 11/11 Modules:<br> - “On The Subject of Morse Code”<br> - “On The Subject of Keypads” | MAR 21
-| Deliverable 2: Game Completion<br> - The bot should be able to solve any bomb in the campaign<br> - We should be confident in the ability for any module to be solved | MAR 28<br> <em>Results date</em>
-| Documentation Week:<br> - Time will be used to work on any project write ups<br> - Work on extra project goals | APR 4
+| Deliverable 2: Game Completion<br> - The bot should be able to solve any bomb in the campaign<br> - We should be confident in the ability of any module to be solved | MAR 28<br> <em>Results date</em>
+| Documentation Week:<br> - Time will be used to work on any project write-ups<br> - Work on extra project goals | APR 4
 | Bonus Week:<br> - Used as buffer week if needed<br> - Work on extra project goals | APR 10<br> <em>The project must be completed.</em>
