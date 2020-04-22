@@ -17,13 +17,14 @@ jobs:
           version: 1.0.2
       - name: Install dependencies
         run: |
-          sudo apt-get install xserver-xephyr -y
+          poetry lock
           poetry export --dev -f requirements.txt -o requirements.txt
-          echo "--------"
-          cat requirements.txt
-          echo "--------"
           pip install -r requirements.txt
-          pip install pyvirtualdisplay
+      - name: Upload requirements
+        uses: actions/upload-artifact@v1
+        with:
+          name: requirements
+          path: requirements.txt
       - name: Test with Pytest
         run: |
           pytest --cov-report=xml
