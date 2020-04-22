@@ -19,6 +19,9 @@ jobs:
         run: |
           sudo apt-get install xserver-xephyr -y
           poetry export --dev -f requirements.txt -o requirements.txt
+          echo "--------"
+          cat requirements.txt
+          echo "--------"
           pip install -r requirements.txt
           pip install pyvirtualdisplay
       - name: Test with Pytest
