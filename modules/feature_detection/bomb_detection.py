@@ -33,18 +33,20 @@ def segmentBomb(bomb):
     # top left and bottom right points as percentages
     # of the way across the screen
     moduleLocations = [
-        [0.2759, 0.2562, 0.4382, 0.5128],
-        [0.43, 0.26, 0.58, 0.50],
-        [0.58, 0.26, 0.73, 0.50],
-        [0.25, 0.51, 0.43, 0.77],
-        [0.44, 0.51, 0.58, 0.76],
-        [0.59, 0.51, 0.73, 0.76],
+        [ 0.2225,      0.26666667,  0.405,       0.49666667],
+        [ 0.4225,      0.26666667,  0.5975,      0.49666667],
+        [ 0.61875,     0.26666667,  0.7875,      0.49666667],
+        [ 0.215,       0.52,        0.40375,     0.75833333],
+        [ 0.43625,     0.52,        0.60125,     0.75833333],
+        [ 0.62375,     0.52,        0.79375,     0.75833333]
     ]
 
     x1 = getPixelFromPercentage(bomb, x=0.0)
     y1 = getPixelFromPercentage(bomb, y=0.0)
     x2 = getPixelFromPercentage(bomb, x=1.0)
     y2 = getPixelFromPercentage(bomb, y=1.0)
+
+    takeScreenshot(bomb, [0.0, 0.0, 1.0, 1.0])
 
     # TODO this enumerate will only work for one side
     print("Detecting and capturing bomb modules...")
@@ -124,23 +126,39 @@ def solveMemoryModule(bomb, moduleIdx):
     print("Solving memory module")
 
     solver = Memory()
-    
+
     for level in range(1, 6):
         time.sleep(3) # wait for buttons to be setup
         screen = takeScreenshot(bomb)
-        memory_module = screen[875:1500, 1645:2265]
+        memory_module = screen[217:382, 332:492]
 
-        button_y = 663
-        button_x = [872.5, 921, 969, 1020]
-        
+        button_y = 375
+        button_x = [369, 393, 418, 443]
+
         # button_image_list = [button1, button2, button3, button4]
         display, buttons = extract_text(memory_module)
         buttons = buttons.replace('8', '3')
         buttons = buttons.replace('$', '3')
+        if len(buttons) > 4:
+            for button in buttons:
+                strip = False;
+
+                try:
+                    int_button = int(button)
+                    strip = int_button not in range(1, 5)
+                except ValueError:
+                    strip = True
+
+                if strip:
+                    print("removing anciliary character:", button)
+                    buttons = buttons.replace(button, '')
 
         # print("level: " + str(level))
         # print("display: " + str(display))
         # print("buttons: " + str(buttons))
+
+        print(display)
+        print(buttons)
 
         stage = Stage(level, int(display), [int(num) for num in buttons])
         solution = solver.stageSolution(stage)
@@ -150,7 +168,7 @@ def solveMemoryModule(bomb, moduleIdx):
         else:
             # print("Solution Type = Label")
             buttonIndex = buttons.index(str(solution.value)) + 1
-        
+
         print("Button position to press: " + str(buttonIndex))
 
         clickAtLocation([button_x[buttonIndex - 1], button_y])

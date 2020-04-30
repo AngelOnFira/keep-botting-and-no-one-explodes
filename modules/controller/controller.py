@@ -9,7 +9,7 @@ v_display = Display(visible=1, size=(1600,900))
 v_display.start()
 import pyautogui
 
-SCREENSHOT_IMAGE_PATH = '/Users/nemzutkovic/git/keep-botting-and-no-one-explodes/images/modules_found/'
+SCREENSHOT_IMAGE_PATH = './images/modules_found/'
 
 # This should do all general movement on the bomb.
 
@@ -38,7 +38,7 @@ def takeScreenshot(bomb, region=[0, 0, 1, 1], moduleIdx=None):
     y1=getPixelFromPercentage(bomb, y=region[1])
     x2=getPixelFromPercentage(bomb, x=region[2]) - getPixelFromPercentage(bomb, x=region[0])
     y2=getPixelFromPercentage(bomb, y=region[3]) - getPixelFromPercentage(bomb, y=region[1])
-    image = pyautogui.screenshot(region=(x1*2, y1*2, x2*2, y2*2))
+    image = pyautogui.screenshot(region=(x1, y1, x2, y2))
     cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     cv2.imwrite(SCREENSHOT_IMAGE_PATH + str(int(round(time.time() * 1000)) if moduleIdx == None else moduleIdx) + '.png', cv_image)
 
