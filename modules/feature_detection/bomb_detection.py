@@ -132,8 +132,8 @@ def solveMemoryModule(bomb, moduleIdx):
         screen = takeScreenshot(bomb)
         memory_module = screen[217:382, 332:492]
 
-        button_y = 375
-        button_x = [369, 393, 418, 443]
+        button_y = 0.57833
+        button_x = [0.44875, 0.47875, 0.5075, 0.54375]
 
         # button_image_list = [button1, button2, button3, button4]
         display, buttons = extract_text(memory_module)
@@ -171,5 +171,7 @@ def solveMemoryModule(bomb, moduleIdx):
 
         print("Button position to press: " + str(buttonIndex))
 
-        clickAtLocation([button_x[buttonIndex - 1], button_y])
-        moveToLocation([50,50])
+        clickAtLocation((
+            getPixelFromPercentage(bomb, x=button_x[buttonIndex - 1]),
+            getPixelFromPercentage(bomb, y=button_y),
+        ))
